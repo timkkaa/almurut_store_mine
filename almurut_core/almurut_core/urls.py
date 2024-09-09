@@ -17,6 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from market.views import HomeView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('home/', HomeView.as_view()),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
