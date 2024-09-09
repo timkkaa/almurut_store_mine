@@ -1,8 +1,14 @@
 from django.db import models
 
 class ProductCategory(models.Model):
-    name = models.CharField(max_length=250)
+    name = models.CharField(max_length=250, unique=True)
 
+     class Meta:
+        verbose_name_prual = 'Котегория товаров'
+        verbose_name = 'Котегория товара'
+
+    def __str__(self):
+        return self.name
 
 
 class Product(models.Model):
@@ -26,8 +32,16 @@ class Product(models.Model):
         verbose_name_prual = 'Товары'
         verbose_name = 'Товар'
 
+    def __str__(self):
+        return self.name
+
 class ProductGallery(models.Model):
-    product = models.ForeignKey()
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='gallery')
+    image = models.ImageField(upload_to='product_gallery/')
+
+    class Meta:
+        verbose_name_prual = 'Галерея товаров'
+        verbose_name = 'Галерея товара'
 
 
 

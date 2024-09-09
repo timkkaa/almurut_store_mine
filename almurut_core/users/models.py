@@ -18,6 +18,10 @@ class CustomUser(AbstractUser):
     phone_number = models.CharField(max_length=25)
     objects = CustomUserManager()
 
+    class Meta:
+        verbose_name_prual = 'Пользователи'
+        verbose_name = 'Пользователь'
+
 
 class User(models.Model):
     first_name = models.CharField(max_length=100)
