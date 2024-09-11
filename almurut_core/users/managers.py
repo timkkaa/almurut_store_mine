@@ -1,6 +1,6 @@
 from django.contrib.auth.models import BaseUserManager
 
-class CustomUserManage(BaseUserManager):
+class CustomUserManager(BaseUserManager):
     def crsate_user(self, email, password, **extra_fields):
         user = self.model(email=email, **extra_fields)
         user.set_password(password)

@@ -1,6 +1,8 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+from users.managers import CustomUserManager
+
 
 class CustomUser(AbstractUser):
     username = None
@@ -17,7 +19,7 @@ class CustomUser(AbstractUser):
     objects = CustomUserManager()
 
     class Meta:
-        verbose_name_prual = 'Пользователи'
+        verbose_name_plural = 'Пользователи'
         verbose_name = 'Пользователь'
 
 
